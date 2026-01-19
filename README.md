@@ -1,59 +1,287 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PHP_Laravel12_Filament_Admin_Starter
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Overview
 
-## About Laravel
+This project is a **modern Laravel 12 admin starter kit** built using **Laravel Breeze** for authentication and **Filament** for a powerful admin panel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+It is designed to be:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Clean and beginner-friendly
+* Fully compatible with Laravel 12
+* Production-ready
+* A modern replacement for old / archived base templates
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This repository can be reused as a base for:
 
-## Learning Laravel
+* Admin panels
+* CMS systems
+* E-commerce backends
+* CRM / ERP projects
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Features
 
-## Laravel Sponsors
+* Laravel 12 (latest stable)
+* Authentication system (Login / Register / Forgot Password)
+* Blade-based UI using Laravel Breeze
+* Filament Admin Panel
+* Admin dashboard
+* User management ready
+* Role & permission ready (Spatie compatible)
+* Clean folder structure
+* Future-proof architecture
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Installation Guide
 
-## Contributing
+Below are the **exact steps** to install this project from scratch.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Laravel 12 + Breeze + Filament
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+STEP 1: Create a New Laravel 12 Project
 
-## Security Vulnerabilities
+```
+composer create-project laravel/laravel php_laravel12_project
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Check Laravel version:
 
-## License
+```
+php artisan --version
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Expected:
+
+```
+Laravel Framework 12.x
+```
+
+---
+
+STEP 2: Environment Setup
+
+Configure database in `.env`
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel12_admin
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+---
+
+STEP 3: Install Laravel Breeze (Authentication)
+
+3.1 Install Breeze package
+
+```
+composer require laravel/breeze --dev
+```
+
+3.2 Install Breeze UI
+
+```
+php artisan breeze:install
+```
+
+Choose exactly:
+
+* Blade
+* No (dark mode optional)
+* PHPUnit (IMPORTANT – not Pest)
+
+3.3 Install frontend assets
+
+```
+npm install
+npm run dev
+```
+
+3.4 Run migrations
+
+```
+php artisan migrate
+```
+
+3.5 Run server
+
+```
+php artisan serve
+```
+
+Open:
+
+```
+http://127.0.0.1:8000
+```
+
+Login / Register should work
+
+---
+
+STEP 4: Enable PHP intl Extension (REQUIRED for Filament)
+
+Open:
+
+```
+C:\xampp\php\php.ini
+```
+
+Find:
+
+```
+;extension=intl
+```
+
+Change to:
+
+```
+extension=intl
+```
+
+Restart Apache.
+
+Verify:
+
+```
+php -m | findstr intl
+```
+
+Output:
+
+```
+intl
+```
+
+---
+
+STEP 5: Install Filament Admin Panel (Laravel 12 Compatible)
+
+5.1 Install Filament
+
+```
+composer require filament/filament:^4.5
+```
+
+5.2 Run Filament installer
+
+```
+php artisan filament:install
+```
+
+5.3 Allow user to access admin panel
+
+Open:
+
+```
+app/Models/User.php
+```
+
+```php
+<?php
+
+namespace App\Models;
+
+use Filament\Panel;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+    use HasFactory, Notifiable, HasRoles;
+
+    /**
+     * Mass assignable attributes
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    /**
+     * Hidden attributes
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * Attribute casting
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+
+    /**
+     * Filament Admin Access Control
+     */
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true; // allow all users for now
+    }
+}
+```
+
+---
+
+STEP 6: Create Admin User
+
+Register a user:
+
+```
+http://127.0.0.1:8000/register
+```
+
+Then open admin:
+
+```
+http://127.0.0.1:8000/admin
+```
+
+Sign In:-
+
+<img width="1077" height="838" alt="Screenshot 2026-01-19 142242" src="https://github.com/user-attachments/assets/5ab9ed63-4aa1-410a-8ea3-3ff035d0b5ae" />
+
+
+Dashboard:-
+
+<img width="1919" height="944" alt="Screenshot 2026-01-19 142300" src="https://github.com/user-attachments/assets/299bd9d0-310f-41d8-94de-6c2745789884" />
+
+
+---
+
+## Result
+
+* Laravel 12 installed
+* Authentication working
+* Filament admin panel working
+* Clean and modern base project
+
+---
+
+## Future Enhancements
+
+* Role-based admin access
+* Permissions management
+* CRUD modules (Users, Products, Orders)
+* Admin theme customization
+
+---
+
+
