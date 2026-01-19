@@ -1,4 +1,22 @@
 # PHP_Laravel12_Filament_Admin_Starter
+<p align="center">
+    <a href="https://github.com/laravel/framework/actions">
+        <img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/laravel/framework">
+        <img src="https://img.shields.io/packagist/l/laravel/framework" alt="License">
+    </a>
+    <img src="https://img.shields.io/badge/Laravel-12.x-red" alt="Laravel 12">
+    <img src="https://img.shields.io/badge/Filament-4.x-orange" alt="Filament 4">
+    <img src="https://img.shields.io/badge/Auth-Breeze-blue" alt="Laravel Breeze">
+</p>
+
 
 ## Overview
 
