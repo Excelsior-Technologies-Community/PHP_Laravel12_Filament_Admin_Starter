@@ -10,11 +10,28 @@ class AdminMiddleware
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
+    public function handle(
+        Request $request,
+        Closure $next
+    ): Response {
+        $user = $request->user();
+
+        if (! $user) {
+            abort(403, 'Unauthorized access.');
+        }
+
+        if (! $user->is_active) {
+            abort(403, 'Your account is inactive.');
+        }
+
+        if (! $user->hasAnyRole([
+            'super_admin',
+            'admin',
+        ])) {
+            abort(403, 'You do not have administrator privileges.');
+        }
+
         return $next($request);
     }
 }
