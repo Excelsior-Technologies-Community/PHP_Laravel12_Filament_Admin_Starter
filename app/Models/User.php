@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Role;
@@ -21,6 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'is_active',
+        'last_login_at',
+        'last_login_ip',
     ];
 
     /**
@@ -40,6 +43,7 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_active' => 'boolean',
+            'last_login_at' => 'datetime',
         ];
     }
 
@@ -70,9 +74,6 @@ class User extends Authenticatable
 
     /**
      * Filament Admin Panel Access Control.
-     *
-     * Only Super Admin and Admin users can access
-     * the Filament admin panel.
      */
     public function canAccessPanel(Panel $panel): bool
     {
@@ -80,5 +81,10 @@ class User extends Authenticatable
             'super_admin',
             'admin',
         ]) && $this->is_active;
+    }
+
+    public function loginActivities(): HasMany
+    {
+        return $this->hasMany(LoginActivity::class);
     }
 }
