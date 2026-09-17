@@ -65,7 +65,9 @@ class AdminPanelProvider extends PanelProvider
              * Dashboard widgets.
              */
             ->widgets([
-                AdminStatsOverview::class,
+                \App\Filament\Widgets\AdminStatsOverview::class,
+                \App\Filament\Widgets\UserRegistrationsChart::class,
+                \App\Filament\Widgets\RolesDistributionChart::class,
                 AccountWidget::class,
                 FilamentInfoWidget::class,
             ])
